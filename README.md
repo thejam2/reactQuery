@@ -8,3 +8,34 @@
 - 무한 스크롤 (Infinite Queries (opens new window))
 - 비동기 과정을 선언적으로 관리할 수 있다.
 - react hook과 사용하는 구조가 비슷하다.
+
+
+## 설치 및 설정
+```
+npx create-react-app my-app
+cd my-app
+yarn install react-query
+yarn install && yarn start
+```
+
+```
+//index.js
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+
+const queryClient = new QueryClient();
+
+ReactDOM.render(
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      {/* devtools */}
+      <ReactQueryDevtools initialIsOpen={true} />
+      <App />
+    </QueryClientProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+```
