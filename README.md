@@ -39,3 +39,8 @@ ReactDOM.render(
   document.getElementById("root")
 );
 ```
+
+## useQuery
+데이터를 get 하기 위한 api
+
+
