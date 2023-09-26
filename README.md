@@ -84,11 +84,33 @@ const { data: nextTodo, error, isFetching } = useQuery(
 );
 ```
 ## useQueries
+- promise.all과 마찬가지로 하나의 배열에 각 쿼리에 대한 상태 값이 객체로 들어옵니다.
 ```
 const result = useQueries([
   {
     queryKey: ["getRune", riot.version],
     queryFn: () => api.getRunInfo(riot.version)
+  },
+  {
+    queryKey: ["getSpell", riot.version],
+    queryFn: () => api.getSpellInfo(riot.version)
+  }
+]);
+```
+- unique key를 배열로 넣으면 query함수 내부에서 변수로 사용 가능. params를 주목
+```
+const riot = {
+  version: "12.1.1"
+};
+
+const result = useQueries([
+  {
+    queryKey: ["getRune", riot.version],
+    queryFn: params => {
+      console.log(params); // {queryKey: ['getRune', '12.1.1'], pageParam: undefined, meta: undefined}
+
+      return api.getRunInfo(riot.version);
+    }
   },
   {
     queryKey: ["getSpell", riot.version],
