@@ -83,3 +83,16 @@ const { data: nextTodo, error, isFetching } = useQuery(
   }
 );
 ```
+## useQueries
+```
+const result = useQueries([
+  {
+    queryKey: ["getRune", riot.version],
+    queryFn: () => api.getRunInfo(riot.version)
+  },
+  {
+    queryKey: ["getSpell", riot.version],
+    queryFn: () => api.getSpellInfo(riot.version)
+  }
+]);
+```
