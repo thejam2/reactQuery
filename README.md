@@ -72,4 +72,14 @@ const { data: nextTodo, error, isFetching } = useQuery(
   }
 );
 ```
-
+## useQuery 동기적으로 실행
+```
+const { data: todoList, error, isFetching } = useQuery("todos", fetchTodoList);
+const { data: nextTodo, error, isFetching } = useQuery(
+  "nextTodos",
+  fetchNextTodoList,
+  {
+    enabled: !!todoList // true가 되면 fetchNextTodoList를 실행한다
+  }
+);
+```
